@@ -1,19 +1,10 @@
 /**
- * AEROPULSE - WEATHER INTELLIGENCE ENGINE
- * ===============================================================
- * Hackathon-Ready Architecture:
- * 1. State Management (current coordinates, unit, cached response)
- * 2. Weather Code Mapping (WMO codes to icons & themes)
- * 3. Smart Advisor Copilot (AI-style contextual recommendations)
- * 4. Custom Canvas Chart (Smooth Bezier 24-hour forecast)
- * 5. Interactive Particle Canvas (Rain, Snow, Stars)
- * 6. UI Controller & Event Listeners
- * ===============================================================
+ * AeroPulse - Weather Intelligence Dashboard
+ * Author: Saurbh Virkar (https://github.com/nesvv)
+ * License: MIT
  */
 
-// -------------------------------------------------------------
-// 1. STATE MANAGEMENT
-// -------------------------------------------------------------
+// Global app state
 const state = {
   city: "London",
   country: "United Kingdom",
@@ -113,9 +104,7 @@ function getSvgIcon(iconType, size = 24) {
   }
 }
 
-// -------------------------------------------------------------
-// 4. SMART COPILOT ADVICE ENGINE (The Hackathon Winner Feature!)
-// -------------------------------------------------------------
+// Rules-based heuristic engine for outfit & activity recommendations
 class SmartAdvisor {
   static generateAdvice(current, hourly, daily) {
     const tips = [];
@@ -822,14 +811,19 @@ function setupEventListeners() {
   });
 }
 
-// -------------------------------------------------------------
-// 11. BOOTSTRAP APPLICATION
-// -------------------------------------------------------------
+// Initialize app
 window.addEventListener("DOMContentLoaded", () => {
+  console.log(
+    "%c AeroPulse %c Crafted by Saurbh Virkar %c https://github.com/nesvv/aeropulse-weather ",
+    "background:#0284c7;color:#fff;font-weight:700;padding:4px 8px;border-radius:4px 0 0 4px;",
+    "background:#1e293b;color:#38bdf8;font-weight:600;padding:4px 8px;",
+    "background:#0f172a;color:#94a3b8;padding:4px 8px;border-radius:0 4px 4px 0;"
+  );
+
   chartInstance = new CanvasChartRenderer("hourlyCanvas");
   particleInstance = new WeatherParticles("weatherParticleCanvas");
   setupEventListeners();
 
-  // Initial load: London
+  // Default initial load: London
   loadWeather(51.5074, -0.1278, "London", "United Kingdom");
 });

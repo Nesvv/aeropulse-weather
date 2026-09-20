@@ -1,62 +1,78 @@
-# ⚡ AeroPulse — Modern Weather Intelligence Dashboard
+# 🌦️ AeroPulse
 
-A modern, hackathon-ready weather intelligence web application built with clean, zero-dependency ES6 JavaScript, responsive Apple Weather-style Bento Grid, interactive HTML5 Canvas charts, dynamic atmospheric particle effects, and an intelligent **Smart Weather Copilot**.
+> A responsive, zero-dependency weather intelligence dashboard built with vanilla JavaScript, modern glassmorphism bento grids, and high-resolution Open-Meteo data.
 
----
+[![Live Demo](https://img.shields.io/badge/demo-online-emerald?style=flat-square)](https://nesvv.github.io/aeropulse-weather/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Vanilla JS](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=flat-square&logo=javascript)](https://developer.mozilla.org/)
 
-## 🚀 How to Run
-
-1. **Option A (Instant)**: Simply double-click [`index.html`](file:///C:/Users/Saurbh%20Virkar/.gemini/antigravity/scratch/impressive-weather-app/index.html) to open it in Chrome, Edge, Safari, or Firefox.
-2. **Option B (Local Dev Server)**:
-   In PowerShell / Terminal:
-   ```bash
-   npx serve .
-   # or with Python
-   python -m http.server 8000
-   ```
+**Live URL:** [https://nesvv.github.io/aeropulse-weather/](https://nesvv.github.io/aeropulse-weather/)
 
 ---
 
-## 🎯 30-Second Hackathon Elevator Pitch
+## 💡 Overview
 
-> *"Most weather apps just dump numbers on a screen. **AeroPulse** transforms raw meteorological data into actionable intelligence. We combined an Apple-grade dark glassmorphism bento grid with a client-side **Smart Weather Copilot** that scans 24-hour precipitation probabilities, UV spikes, and wind vectors to provide plain-language recommendations—like the optimal window for outdoor activities or rain alerts. It uses high-resolution Open-Meteo models with zero API-key dependencies, dynamic physics-based particle backdrops, and custom smooth Canvas telemetry."*
+Most weather websites either overwhelm users with cluttered tables or hide practical information behind ads. **AeroPulse** was built with a focused goal: deliver real-time meteorological data in an intuitive Apple-style bento grid while providing human-friendly recommendations (what to wear, upcoming rain alerts, and UV exposure warnings).
+
+Everything runs directly in the client without external frameworks or build tooling—keeping the footprint under 65KB.
 
 ---
 
-## 🧠 2-Minute Code Walkthrough (How to Explain It Easily)
+## ✨ Features
 
-The entire project is structured into **3 clean, unbloated files** that you can explain effortlessly:
+- **Apple Weather Bento Grid**: Clean visual hierarchy showcasing current temperature, weather conditions, feels-like metrics, and 7-day outlook.
+- **Dynamic Weather Ambience**: The page theme and ambient backdrop glow dynamically adjust to match the local weather (clear skies, thunderstorms, overcast, snowfall, rainy slate).
+- **Custom HTML5 Canvas 24-Hour Curve**: Native cubic-bezier temperature visualization with interactive hover crosshairs, rain probability bars, and tooltips (no Chart.js or D3 dependencies).
+- **Today's Activity & Outfit Brief**: An atmospheric rule engine that evaluates temperature, humidity, wind vectors, and hourly precipitation probabilities to output natural advice (e.g. umbrella warnings, high UV alerts).
+- **Telemetry Bento Cards**:
+  - **Live Wind Compass**: Real-time rotating needle calculating cardinal direction and velocity.
+  - **Solar Orbit Arc**: Semi-elliptical visual progress tracker for sunrise and sunset.
+  - **UV Exposure Index & Humidity/Dew Point**: Graded exposure indicators.
+- **Zero API Key Requirement**: Direct integration with the Open-Meteo weather and geocoding services, eliminating API key leak risks and rate limits during live demos.
+- **Offline Resilient**: Integrated fallback dataset ensuring the interface renders smoothly even under unstable network conditions.
+- **Unit Toggle**: Instant seamless conversion between Metric (°C, km/h) and Imperial (°F, mph).
 
+---
+
+## 🛠️ Tech Stack
+
+- **Markup**: Semantic HTML5 with SVG iconography
+- **Styles**: Modern CSS3 (Glassmorphism, CSS Grid, Backdrop Filter, CSS Custom Properties)
+- **Scripting**: Vanilla ES6+ JavaScript (Fetch API, HTML5 Canvas 2D API, Geolocation API)
+- **Data Source**: [Open-Meteo Weather API](https://open-meteo.com/) (NOAA / ECMWF models)
+- **Hosting**: GitHub Pages
+
+---
+
+## 🚀 Quick Start
+
+To run the project locally, clone the repository and open `index.html`:
+
+```bash
+git clone https://github.com/nesvv/aeropulse-weather.git
+cd aeropulse-weather
 ```
-impressive-weather-app/
-├── index.html   --> Bento Grid UI layout (Hero, Canvas Chart, 7-Day Forecast, Metric Cards)
-├── style.css    --> Glassmorphism, CSS variables, responsive grid, dynamic weather themes
-└── app.js       --> 4 core modules: Data Fetching, Smart Copilot, Canvas Curve, UI Controller
+
+You can open `index.html` directly in any web browser, or serve it with a lightweight local server:
+
+```bash
+# Python 3
+python -m http.server 8000
+
+# or Node/npx
+npx serve .
 ```
 
-### 1. Zero-Config Data Pipeline (No API Keys to Leak or Expire!)
-* Point to `WeatherService.fetchWeather()` in [`app.js`](file:///C:/Users/Saurbh%20Virkar/.gemini/antigravity/scratch/impressive-weather-app/app.js).
-* Explain: *"We use the Open-Meteo high-resolution global forecast API and Nominatim geocoding. It requires zero API keys, which means our demo will never crash from rate limits, expired tokens, or network auth blocks during the hackathon."*
-
-### 2. The "Smart Copilot" Heuristic Engine
-* Point to `SmartAdvisor.generateAdvice()` in [`app.js`](file:///C:/Users/Saurbh%20Virkar/.gemini/antigravity/scratch/impressive-weather-app/app.js).
-* Explain: *"Instead of making the user do mental math looking at rain percentages and UV numbers, our Copilot analyzes the next 8-hour window and dynamically generates contextual advice (e.g. reminding you to bring an umbrella if rain spikes at 2 PM, or alerting about UV protection)."*
-
-### 3. Native HTML5 Canvas 24-Hour Curve (Zero Bloat)
-* Point to `CanvasChartRenderer` in [`app.js`](file:///C:/Users/Saurbh%20Virkar/.gemini/antigravity/scratch/impressive-weather-app/app.js).
-* Explain: *"Rather than importing a heavy 300KB charting library, we wrote a lightweight cubic Bezier canvas renderer with interactive hover crosshairs, precipitation bars, and smooth gradients. It renders at 60 FPS on any device."*
-
-### 4. Reactive Atmosphere & Bento Cards
-* Point to `WeatherParticles` and `renderBentoMetrics()` in [`app.js`](file:///C:/Users/Saurbh%20Virkar/.gemini/antigravity/scratch/impressive-weather-app/app.js).
-* Explain: *"The background dynamically transitions its ambient glow and particle physics (rain streaks, snow flurries, twinkling stars) based on live WMO weather codes. The metric cards feature a live wind compass dial that rotates to exact degrees and a solar cycle arc tracking sunrise and sunset."*
+Open `http://localhost:8000` in your browser.
 
 ---
 
-## 💡 Quick Answers for Judge Questions
+## 👤 Author
 
-| Question | Your Confident Answer |
-| :--- | :--- |
-| **"Which API are you using?"** | *"Open-Meteo's open-source meteorological API paired with its geocoding engine. It sources data directly from national weather services like NOAA and ECMWF."* |
-| **"What happens if there's no internet?"** | *"We built an automatic fallback mock state so the demo gracefully presents realistic data even if hackathon conference Wi-Fi drops."* |
-| **"Is it mobile-friendly?"** | *"Yes, the CSS Bento Grid is fully responsive with CSS grid auto-fit and flexible wrapping down to small smartphone viewports."* |
-| **"Can I switch units?"** | *"Yes! Click the `°C` / `°F` toggle in the top right to convert temperatures and wind speeds instantaneously."* |
+- **Saurbh Virkar** — [@nesvv](https://github.com/nesvv)
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
